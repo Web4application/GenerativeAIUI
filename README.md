@@ -12,7 +12,7 @@
 Add via Swift Package Manager:
 
 ```swift
-.package(url: "https://github.com/your-username/GenerativeAIUIComponents.git", from: "0.1.0")
+.package(url: "https://github.com/web4application/GenerativeAIUIComponents.git", from: "0.1.0")
 ```
 
 ## License
