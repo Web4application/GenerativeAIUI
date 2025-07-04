@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Generative AI Companion</title>
+  <style>
+    body { font-family: system-ui; background: #f0f4f8; padding: 2rem; }
+    .chat { max-width: 640px; margin: auto; background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 0 16px rgba(0,0,0,0.05); }
+    .msg { margin: 1rem 0; }
+    .user { font-weight: bold; color: #007aff; }
+    .bot { background: #f1f1f1; padding: 0.5rem; border-radius: 0.5rem; }
+    input { width: 100%; padding: 0.75rem; margin-top: 1rem; font-size: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="chat">
+    <h2>💬 Generative AI Chat</h2>
+    <div id="output"></div>
+    <input id="input" type="text" placeholder="Ask me anything…" />
+  </div>
+
+  <script>
+    const input = document.getElementById('input');
+    const output = document.getElementById('output');
+
+    input.addEventListener('keypress', async (e) => {
+      if (e.key === 'Enter') {
+        const prompt = input.value.trim();
+        if (!prompt) return;
+
+        output.innerHTML += `<div class="msg user">You: ${prompt}</div>`;
+        input.value = '';
+
+        const res = await fetch('https://your-backend-api.com/ask', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt })
+        });
+
+        const data = await res.json();
+        output.innerHTML += `<div class="msg bot">🤖 ${data.reply}</div>`;
+        output.scrollTop = output.scrollHeight;
+      }
+    });
+  </script>
+</body>
+</html>
