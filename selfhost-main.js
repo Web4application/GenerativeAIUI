@@ -4,7 +4,7 @@ import path from 'path';
 import morgan from 'morgan';
 
 const app = express();
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 22;
 
 // Middleware: logging
 app.use(morgan('combined'));
