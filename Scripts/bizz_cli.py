@@ -4,7 +4,7 @@ import argparse
 import requests
 import os
 
-API_URL = os.getenv("API_URL", "http://localhost:8000")
+API_URL = os.getenv("API_URL", "http://127.0.0.1:9494")
 API_KEY = os.getenv("API_KEY", "change-me")
 
 
